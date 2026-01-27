@@ -1,0 +1,10 @@
+class Solution:
+    def maxArea(self, h):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        i=0
+        n=len(v)
+        area = 0
+        while 
