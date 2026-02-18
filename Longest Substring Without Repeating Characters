@@ -1,0 +1,12 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        op = 0
+        co = {}
+        pos = -1
+        for index in range(len(s)):
+            l = s[index]
+            if l in co and co[l] > pos:
+                pos = co[l]
+            co[l] = index
+            op = max(op, index - pos)
+        return op

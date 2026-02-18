@@ -1,0 +1,28 @@
+class Solution(object):
+    def convert(self, s, numRows):
+        # special case
+        if numRows == 1 or numRows >= len(s):
+            return s
+
+        # create rows
+        rows = [""] * numRows
+
+        current_row = 0
+        going_down = False
+
+        # place characters
+        for ch in s:
+            rows[current_row] += ch
+
+            # change direction at top or bottom
+            if current_row == 0 or current_row == numRows - 1:
+                going_down = not going_down
+
+            # move row pointer
+            if going_down:
+                current_row += 1
+            else:
+                current_row -= 1
+
+        # combine all rows
+        return "".join(rows)
