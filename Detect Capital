@@ -1,0 +1,14 @@
+class Solution(object):
+    def detectCapitalUse(self, word):
+        """
+        :type word: str
+        :rtype: bool
+        """
+        if word.isupper():
+            return True
+
+        for i, c in enumerate(word):
+            if c.isupper() and not i == 0:
+                return False
+                
+        return True

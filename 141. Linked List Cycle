@@ -1,0 +1,15 @@
+
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        rabbit = head
+        tortoise = head
+        while rabbit and rabbit.next:
+            rabbit = rabbit.next.next
+            tortoise = tortoise.next
+            if rabbit == tortoise:
+                return True
+        return False

@@ -1,0 +1,18 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        if len(s) & 1:
+            return False
+        match = {')':'(', '}':'{', ']':'['}
+        stack = []
+        push, pop = stack.append, stack.pop
+        for i in s:
+            if i in match.values():
+                push(i)
+            else:
+                if not stack or stack.pop() != match[i]:
+                    return False
+        return not stack
