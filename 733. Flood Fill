@@ -1,0 +1,35 @@
+class Solution(object):
+    def floodFill(self, image, sr, sc, color):
+        """
+        :type image: List[List[int]]
+        :type sr: int
+        :type sc: int
+        :type color: int
+        :rtype: List[List[int]]
+        """
+        if not image: return image
+
+        visited = []
+        need_to_visit = [(sr,sc)]
+        source_color = image[sr][sc]
+
+        image_width = len(image)
+        image_height = len(image[sr])
+
+        while need_to_visit:
+            x, y = need_to_visit.pop(0)
+            image[x][y] = color
+            visited.append((x,y))
+
+            if y-1 >= 0:
+                if image[x][y-1] == source_color and (x,y-1) not in visited: need_to_visit.append((x, y-1))
+
+            if y+1 <= image_height-1:
+                if image[x][y+1] == source_color and (x,y+1) not in visited: need_to_visit.append((x, y+1))
+            
+            if x-1 >= 0:
+                if image[x-1][y] == source_color and (x-1,y) not in visited: need_to_visit.append((x-1, y))
+    
+            if x+1 <= image_width-1:
+                if image[x+1][y] == source_color and (x+1,y) not in visited: need_to_visit.append((x+1, y))
+        return image 

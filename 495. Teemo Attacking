@@ -1,0 +1,13 @@
+class Solution(object):
+    def findPoisonedDuration(self, timeSeries, duration):
+        """
+        :type timeSeries: List[int]
+        :type duration: int
+        :rtype: int
+        """
+        if len(timeSeries) == 0:
+            return 0
+        ans = 0
+        for i in range(0,len(timeSeries)-1):
+            ans += min(timeSeries[i+1] - timeSeries[i], duration) 
+        return ans + duration

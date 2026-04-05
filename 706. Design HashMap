@@ -1,0 +1,36 @@
+class MyHashMap(object):
+
+    def __init__(self):
+        self.hs =[]
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
+        for i in range(len(self.hs)):
+            if self.hs[i][0] == key:
+                self.hs[i] = (key, value)
+                return
+        self.hs.append((key, value))
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        for k, v in self.hs:
+            if k == key:
+                return v
+        return -1
+
+    def remove(self, key):
+        """
+        :type key: int
+        :rtype: None
+        """
+        for i in range(len(self.hs)):
+            if self.hs[i][0] == key:
+                self.hs.pop(i)
+                return
