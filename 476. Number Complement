@@ -1,0 +1,16 @@
+class Solution(object):
+    def findComplement(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        b=bin(num)
+        nb=b[2:]
+        t=""
+        s=str(nb)
+        for ch in s:
+            if ch=="0":
+                t+="1"
+            elif ch=="1":
+                t+="0"
+        return int(t,2)
