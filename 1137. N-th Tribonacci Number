@@ -1,0 +1,18 @@
+class Solution(object):
+    def tribonacci(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        seem = {}
+        def helping(m):
+            if m in seem:
+                return seem[m]
+            if m == 0:
+                return 0
+            if m < 3:
+                return 1
+            result = helping(m-1) + helping(m-2) + helping(m-3)
+            seem[m] = result
+            return result
+        return helping(n)
