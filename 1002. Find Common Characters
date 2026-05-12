@@ -1,0 +1,25 @@
+class Solution(object):
+    def commonChars(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        result = []
+        if not words:
+            return result
+        min_freq = [float('inf')] * 26
+
+        for word in words:
+            freq = [0] * 26
+            for char in word:
+                freq[ord(char) - ord('a')] += 1
+            
+            for i in range(26):
+                min_freq[i] = min(min_freq[i], freq[i])
+
+        for i in range(26):
+            while min_freq[i] > 0:
+                result.append(chr(i + ord('a')))
+                min_freq[i] -= 1
+
+        return result
