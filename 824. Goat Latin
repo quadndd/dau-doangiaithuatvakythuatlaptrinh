@@ -1,0 +1,19 @@
+class Solution(object):
+    def toGoatLatin(self, sentence):
+        """
+        :type sentence: str
+        :rtype: str
+        """
+        temp = []
+        vowels = ['a', 'e', 'i', 'o', 'u']
+
+        i = 1
+        for w in sentence.split():
+            if w[0].lower() in vowels :
+                word = w + "ma"
+            else :
+                word = w[1:]+w[0]+ 'ma'
+            word = word + "a"* i
+            i = i+1
+            temp.append(word)
+        return " ".join(temp)
