@@ -1,0 +1,20 @@
+class Solution(object):
+    def findLucky(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        d={}
+        
+        for i in arr:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] += 1
+        
+        lucky = -1
+        for i,j in d.items():
+            if i==j and i>lucky:
+                lucky = i
+        
+        return lucky
