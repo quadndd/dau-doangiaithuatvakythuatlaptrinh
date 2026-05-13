@@ -1,0 +1,28 @@
+class Solution(object):
+    def sortString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        freq={}
+        ans=''
+        used=0
+        for ch in s:
+            freq[ch]=freq.get(ch,0)+1
+        for _ in range(len(s)):
+            for ch in sorted(freq.keys()):
+                if freq[ch]>0:
+                    ans+=ch
+                    freq[ch]-=1
+                    used+=1
+            if used==len(s):
+                break
+
+            for ch in sorted(freq.keys(),reverse=True):
+                if freq[ch]>0:
+                    ans+=ch
+                    freq[ch]-=1
+                    used+=1
+            if used==len(s):
+                break
+        return ans
