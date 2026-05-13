@@ -1,0 +1,32 @@
+class Solution(object):
+    def reformat(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        letter=[]
+        digit=[]
+        res=""
+        for charc in s:
+            if charc.isdigit()==True:
+                digit.append(charc)
+            else:
+                letter.append(charc)
+        if abs(len(letter)-len(digit))>=2:
+            return ""
+        if len(letter)>=len(digit):
+            temp1=letter[:]
+            temp2=digit[:]
+        else:
+            temp1=digit[:]
+            temp2=letter[:]
+
+        while temp1 or temp2:
+            a,b="",""
+            
+            if temp1:
+                a=temp1.pop(0)
+            if temp2:
+                b=temp2.pop(0)
+            res = res+a+b
+        return res
